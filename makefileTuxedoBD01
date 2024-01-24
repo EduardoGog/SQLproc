@@ -42,10 +42,14 @@ cliTuxedoBD01_insert: $(OBJ)/cliTuxedoBD01_insert.o
 # Generacion de Ficheros Objeto
 $(OBJ)/srvTuxedoBD01.o: $(SRC)/srvTuxedoBD01.c
 	@echo "Genera objetos ..."
-	$(CC) -c -I/usr/include/c++/4.8.2/x86_64-redhat-linux -I$(ORACLE_HOME)/precomp/public -I$(ORACLE_HOME)/rdbms/public -I../inc -I$(TUXDIR)/include -L$(ORACLE_HOME)/lib -L$(TUXDIR)/lib $(SRC)/srvTuxedoBD01.c -o $(OBJ)/srvTuxedoBD01.o -lclntsh -lfml32 -ltux
+	$(CC) -c -I/usr/include/c++/4.8.2/x86_64-redhat-linux \
+		-I$(ORACLE_HOME)/precomp/public -I$(ORACLE_HOME)/rdbms/public -I../inc \
+		-I$(TUXDIR)/include -L$(ORACLE_HOME)/lib -L$(TUXDIR)/lib $(SRC)/srvTuxedoBD01.c -o \
+		$(OBJ)/srvTuxedoBD01.o -lclntsh -lfml32 -ltux
 
 $(OBJ)/cliTuxedoBD01_insert.o: $(SRC)/cliTuxedoBD01_insert.c
-	$(CC) -c -I../inc -I$(TUXDIR)/include $(SRC)/cliTuxedoBD01_insert.c -o $(OBJ)/cliTuxedoBD01_insert.o
+	$(CC) -c -I../inc -I$(TUXDIR)/include $(SRC)/cliTuxedoBD01_insert.c -o \
+		$(OBJ)/cliTuxedoBD01_insert.o
 
 # Borrado
 cleanAll:
@@ -53,4 +57,3 @@ cleanAll:
 
 cleanElem:
 	rm $(OBJ)/srvTuxedoBD01.o $(OBJ)/cliTuxedoBD01_insert.o
-
