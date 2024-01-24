@@ -6,7 +6,9 @@
 #include <userlog.h>
 #include <fml32.h>
 #include <tx.h>
+
 #include "biblioBD01.fml.h"
+
 #include <sqlca.h>
 #include <sqlda.h>
 #include <oraca.h>
@@ -47,7 +49,18 @@ void cierraConexion(){
 }else{
 EXEC SQL AT ORACLE2 ROLLBACK RELEASE;
 	}
-}//cierraConexion	
+}//cierraConexion
+
+int sqlError(const char*zpA_cadError){
+char zaL_errorOra[512];
+long unsigned int ivL_longCadn;
+long unsigned int ivL_longMens;
+sqlglm(zaL_errorOra, &ivL_longCadn, &ivL_longMens);
+printf("ERROR DE SISTEMA, ocurrioun error en BD \n");
+printf("Error encontrado : %s \n", zpA_cadError);
+printf("Error de Oracle : %s \n", zaL_errorOra);
+return-1;
+}//sqlError
 
 int tpsvrinit(int argc, char *argv[]){
    int iRetValue = 0;
@@ -128,4 +141,3 @@ void INSERT_FML32(TPSVCINFO *rqst) {
     cierraConexion();
     tpreturn(TPSUCCESS, 0, rqst->data, strlen(rqst->data), 0);
 }
-
