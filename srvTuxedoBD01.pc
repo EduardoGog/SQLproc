@@ -86,7 +86,7 @@ void INSERT_FML32(TPSVCINFO *rqst) {
     FBFR32* fbfr = (FBFR32*)rqst->data;
 
     strcpy(svL_paramCon.usuario_DB, "system");
-    strcpy(svL_paramCon.password_DB, "Lasangreazul2393");
+    strcpy(svL_paramCon.password_DB, "XXXXXXXXXXXXXXX");
     strcpy(svL_paramCon.name_DB, "EDGG");
 
     memset(&t_codigo, 0x00, sizeof(t_codigo));
